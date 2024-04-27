@@ -5,12 +5,19 @@ namespace App\Entity;
 use App\Entity\Traits\TimestampableTrait;
 use App\Repository\AbstractContactRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\DiscriminatorColumn;
 use Doctrine\ORM\Mapping\InheritanceType;
+use Symfony\Component\Serializer\Attribute\DiscriminatorMap;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AbstractContactRepository::class)]
 #[ORM\Table(name: 'user')]
 #[InheritanceType('SINGLE_TABLE')]
+#[DiscriminatorColumn(name: 'discr', type: 'string')]
+#[DiscriminatorMap(typeProperty: 'type', mapping: [
+    'user' => User::class,
+    'admin' => Admin::class,
+])]
 #[ORM\HasLifecycleCallbacks]
 class AbstractContact
 {
