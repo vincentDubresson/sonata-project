@@ -10,8 +10,8 @@ imports:
 parameters:
     # https://symfony.com/doc/6.4/performance.html#dump-the-service-container-into-a-single-file
     .container.dumper.inline_factories: true
-    noreply_email: noreply@vdub-dev.fr
-    developer_email: contact@vdub-dev.fr
+    noreply_email: '%env(NOREPLY_EMAIL)%'
+    developer_email: '%env(CONTACT_EMAIL)%'
 
 services:
     # default configuration for services in *this* file
