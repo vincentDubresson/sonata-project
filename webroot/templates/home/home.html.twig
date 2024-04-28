@@ -4,9 +4,16 @@
     <div class="bg-white">
         <div class="mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
             <div class="text-center">
-                <p class="mt-1 mb-3 text-4xl font-bold tracking-tight text-red-900 sm:text-5xl lg:text-6xl">Ceci est une démo de React dans une application Symfony</p>
+                <p class="mt-1 mb-3 text-4xl font-bold tracking-tight text-red-900 sm:text-5xl lg:text-6xl">Ceci est une démo de l'impersonnalisation.</p>
                 <div {{ react_component('Hello', {'fullName': 'Vincent'}) }}></div>
             </div>
         </div>
     </div>
+    {% if is_granted('IS_IMPERSONATOR') %}
+        <div class="bg-white w-30 mx-auto max-w-7xl py-16 px-4 sm:py-24 sm:px-6 lg:px-8 mt-5">
+            <div class="text-center">
+                <p class="impersonation_text">Impersonnalisation en cours. <a class="js_impersonation_link" style="color: dodgerblue !important;" href="{{ impersonation_exit_path(path('app_home_action')) }}">Cliquer ici pour quitter l'impersonnalisation.</a></p>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

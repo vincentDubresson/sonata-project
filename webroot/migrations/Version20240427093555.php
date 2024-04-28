@@ -20,7 +20,7 @@ final class Version20240427093555 extends AbstractMigration
     public function up(Schema $schema): void
     {
         $this->addSql("INSERT INTO user (id, gender, firstname, lastname, email, phone, enable, visible, created_at, updated_at, discr, roles, password) VALUES (1, 'Monsieur', 'John', 'Doe', 'johndoe@test.fr', '+33.6.01.02.03.04', true, true, NOW(), NOW(), 'admin', '[\"ROLE_USER\", \"ROLE_ADMIN\"]', '$2y$13$8zXViErj69Qn0q4qrXczxe1ASfH/wkYUPkSGYPO.kBLCPLcfNhZeC')");
-        $this->addSql("INSERT INTO user (id, gender, firstname, lastname, email, phone, enable, visible, created_at, updated_at, discr, roles, password) VALUES (2, 'Madame', 'Jane', 'Doe', 'janedoe@test.fr', '+33.6.01.02.03.04', true, true, NOW(), NOW(), 'user', '[\"ROLE_USER\"]', '$2y$13$8zXViErj69Qn0q4qrXczxe1ASfH/wkYUPkSGYPO.kBLCPLcfNhZeC')");
+        $this->addSql("INSERT INTO user (id, gender, firstname, lastname, email, phone, enable, visible, created_at, updated_at, discr, roles, password) VALUES (2, 'Madame', 'Jane', 'Doe', 'janedoe@test.fr', '+33.6.01.02.03.04', true, true, NOW(), NOW(), 'super_user', '[\"ROLE_USER\"]', '$2y$13$8zXViErj69Qn0q4qrXczxe1ASfH/wkYUPkSGYPO.kBLCPLcfNhZeC')");
 
     }
 

@@ -17,6 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[DiscriminatorMap(typeProperty: 'type', mapping: [
     'user' => User::class,
     'admin' => Admin::class,
+    'super_user' => SuperUser::class,
 ])]
 #[ORM\HasLifecycleCallbacks]
 class AbstractContact

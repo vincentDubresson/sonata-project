@@ -7,6 +7,9 @@ class Gender
     public const MALE = 'Monsieur';
     public const FEMALE = 'Madame';
 
+    /**
+     * @return array<string, string>
+     */
     public static function getChoices(): array
     {
         return [

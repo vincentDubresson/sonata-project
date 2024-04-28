@@ -1,16 +1,28 @@
-import { registerReactControllerComponents } from '@symfony/ux-react';
-import './bootstrap';
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
+// Importation des styles
+import './styles/sonata.scss';
 
-// any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.scss';
-
-registerReactControllerComponents(require.context('./react/controllers', true, /\.(j|t)sx?$/));
+// Gestionnaire de clics pour l'impersonation link
+document.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('.impersonation_on_link');
+  links.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault(); // Empêcher le comportement par défaut du lien
+      const href = link.getAttribute('href'); // Capture du lien
+      setTimeout(() => {
+        //
+        if (!localStorage.getItem('__Secure-IMPERSONATE')) {
+          localStorage.setItem('__Secure-IMPERSONATE', 'true');
+        }
+        // Ouvrir le lien dans un nouvel onglet
+        window.open(href, '_blank');
+        // Rafraîchir la page d'origine après un délai de 100 ms
+        setTimeout(() => {
+          window.location.reload();
+        }, 10); // Délai de 100 ms
+      }, 10); // Ouvre le lien après un délai de 10 ms
+    });
+  });
+});
 
 if (document.querySelector('.js_impersonation_link')) {
   const quitLink = document.querySelector('.js_impersonation_link');

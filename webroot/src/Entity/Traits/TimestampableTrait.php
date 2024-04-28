@@ -39,13 +39,13 @@ trait TimestampableTrait
     #[ORM\PrePersist]
     public function _timestampable_prePersist(): void
     {
-        $this->createdAt = new \DateTime("now");
-        $this->updatedAt = new \DateTime("now");
+        $this->createdAt = new \DateTime('now');
+        $this->updatedAt = new \DateTime('now');
     }
 
     #[ORM\PreUpdate]
     public function _timestampable_preUpdate(): void
     {
-        $this->updatedAt = new \DateTime("now");
+        $this->updatedAt = new \DateTime('now');
     }
 }

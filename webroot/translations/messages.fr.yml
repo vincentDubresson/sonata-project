@@ -1,0 +1,5 @@
+common:
+  users: Utilisateurs
+  admins: Administrateurs
+  user: Utilisateur
+  admin: Administrateur

@@ -2,20 +2,20 @@
 
 namespace App\Admin;
 
-use App\Entity\Admin;
 use App\Entity\Enum\Gender;
+use App\Entity\SuperUser;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
- * @extends AbstractAdmin<Admin>
+ * @extends AbstractAdmin<SuperUser>
  */
-class AdminAdmin extends AbstractAdmin
+class SuperUserAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $form): void
     {
@@ -45,11 +45,21 @@ class AdminAdmin extends AbstractAdmin
             ->add('createdAt', null, [
                 'timezone' => 'Europe/Paris',
             ])
+            ->add(ListMapper::NAME_ACTIONS, null, [
+                'actions' => [
+                    'edit' => [],
+                    'delete' => [],
+                    'impersonate' => [
+                        'template' => 'admin/SuperUser/CRUD/list__action_impersonation.html.twig',
+                    ],
+                ],
+            ])
         ;
     }
 
-    protected function configureShowFields(ShowMapper $show): void
+    protected function configureRoutes(RouteCollectionInterface $collection): void
     {
-        $show->add('firstname');
+        $collection
+            ->add('impersonate', $this->getRouterIdParameter().'/impersonate');
     }
 }
