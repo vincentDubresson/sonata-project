@@ -1,0 +1,17 @@
+{% extends 'standard_layout.html.twig' %}
+
+{% block meta_tags %}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {{ encore_entry_link_tags('sonata') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {{ encore_entry_script_tags('sonata') }}
+{% endblock %}
